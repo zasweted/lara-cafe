@@ -26,19 +26,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($categories as $categorie)
+                        @foreach($categories as $category)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $categorie->name }}
+                                {{ $category->name }}
                             </th>
                             <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <img src="{{ Storage::url($categorie->image) }}" alt="image" class="w-16 h-16 rounded">
+                                <img src="{{ Storage::url($category->image) }}" alt="image" class="w-16 h-16 rounded">
                             </th>
                             <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $categorie->description }}
+                                {{ $category->description }}
+                            </th>
+                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <div class="flex space-x-2">
+                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="px-4 py-2 bg-green-500 rounded-lg hover:bg-green-700 text-white">Edit</a>
+                                <form class="px-4 py-2 bg-red-500 rounded-lg hover:bg-red-700 text-white" method="post" action="{{ 'admin.categories.destroy', $category->id }}" onsubmit="return confirm('Are you sure?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Delete</button>
+                                </form>
+                                </div>
                             </th>
                         </tr>
-                    @endforeach
+                        @endforeach
                     </tbody>
                 </table>
             </div>
