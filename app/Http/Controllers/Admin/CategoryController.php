@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Http\Requests\CategoryStoreRequest as CSR;
+use App\Http\Requests\CategoryStoreRequest;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
@@ -41,7 +41,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CSR $request)
+    public function store(CategoryStoreRequest $request)
     {
         $image = $request->file('image')->store('public/categories');
         Category::create([
@@ -112,8 +112,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        Storage::delete($category->image);
+        $category->delete();
+
+        return to_route('admin.categories.index');
     }
 }
