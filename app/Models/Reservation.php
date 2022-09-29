@@ -18,4 +18,14 @@ class Reservation extends Model
         'table_id',
         'guest_number'
     ];
+
+    protected $dates = [
+        'res_dates'
+    ];
+
+
+    public function table()
+    {
+        return $this->belongsTo(Table::class);
+    }
 }
