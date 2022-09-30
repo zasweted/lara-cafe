@@ -20,7 +20,7 @@ class Reservation extends Model
     ];
 
     protected $dates = [
-        'res_dates'
+        'res_date'
     ];
 
 

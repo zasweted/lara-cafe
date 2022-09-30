@@ -73,7 +73,7 @@
                             <div class="mt-1">
                                 <select id="table_id" name="table_id" class="form-multiselect block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                                     @foreach($tables as $table)
-                                    <option value="{{ $table->id }}">{{ $table->name }}</option>
+                                    <option value="{{ $table->id }}">{{ $table->name }} ({{ $table->guest_number }})</option>
                                     @endforeach
                                 </select>
                             </div>
