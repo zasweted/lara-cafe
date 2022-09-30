@@ -67,9 +67,14 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Reservation $reservation, Table $table)
     {
-        //
+        $tables = Table::all();
+
+        return view('admin.reservations.edit', [
+            'reservation' => $reservation,
+            'tables' => $tables
+        ]);
     }
 
     /**
@@ -79,9 +84,11 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Reservation $reservation, ReservationStoreRequest $request)
     {
-        //
+        $reservation->update($request->validated());
+
+        return to_route('admin.reservations.index');
     }
 
     /**
