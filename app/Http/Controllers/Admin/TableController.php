@@ -99,6 +99,6 @@ class TableController extends Controller
         $table->delete();
         $table->reservations()->delete();
 
-        return to_route('admin.tables.index')->with('success', 'Table deleted successfully!');
+        return to_route('admin.tables.index')->with('danger', 'Table deleted successfully!');
     }
 }

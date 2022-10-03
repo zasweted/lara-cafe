@@ -18,7 +18,7 @@
                         <div class="sm:col-span-6">
                             <label for="name" class="block text-sm font-medium text-gray-700"> Name </label>
                             <div class="mt-1">
-                                <input  value={{ $menu->name }} type="text" id="name" name="name" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('name') border-red-500 @enderror" />
+                                <input  value="{{ old('name') ?? $menu->name }}" type="text" id="name" name="name" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('name') border-red-500 @enderror" />
                             </div>
                             @error('name')
                                 <div class="text-sm text-red-400">{{ $message }}</div>
@@ -39,7 +39,7 @@
                         <div class="sm:col-span-6">
                             <label for="price" class="block text-sm font-medium text-gray-700"> Price </label>
                             <div class="mt-1">
-                                <input  value={{ $menu->price }} type="number" min="0.00" max="10000.00" step="0.01" id="price" name="price" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('price') border-red-500 @enderror" />
+                                <input  value="{{ old('price') ?? $menu->price }}" type="number" min="0.00" max="10000.00" step="0.01" id="price" name="price" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('price') border-red-500 @enderror" />
                             </div>
                             @error('price')
                                 <div class="text-sm text-red-400">{{ $message }}</div>
@@ -48,7 +48,7 @@
                         <div class="sm:col-span-6">
                             <label for="body" class="block text-sm font-medium text-gray-700">Description</label>
                             <div class="mt-1">
-                                <textarea name="description" id="body" rows="3" class="shadow-sm focus:ring-indigo-500 appearance-none bg-white border  py-2 px-3 text-base leading-normal transition duration-150 ease-in-out focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md @error('description') border-red-500 @enderror"> {{ $menu->description }}</textarea>
+                                <textarea name="description" id="body" rows="3" class="shadow-sm focus:ring-indigo-500 appearance-none bg-white border  py-2 px-3 text-base leading-normal transition duration-150 ease-in-out focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md @error('description') border-red-500 @enderror"> {{ old('description') ?? $menu->description }}</textarea>
                             </div>
                             @error('description')
                                 <div class="text-sm text-red-400">{{ $message }}</div>

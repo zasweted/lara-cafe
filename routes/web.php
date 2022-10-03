@@ -6,6 +6,10 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\FrontEnd\CategoryController as FrontEndCategoryController;
+use App\Http\Controllers\FrontEnd\MenuController as FrontEndMenuController;
+use App\Http\Controllers\FrontEnd\ReservationController as FrontEndReservationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +24,13 @@ use App\Http\Controllers\Admin\ReservationController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/categories', [FrontEndCategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{category}', [FrontEndCategoryController::class, 'show'])->name('categories.show');
+Route::get('/menus', [FrontEndMenuController::class, 'index'])->name('menus.index');
+Route::get('/reservations/step-one', [FrontEndReservationController::class, 'stepOne'])->name('reservations.step.one');
+Route::get('/reservations/step-two', [FrontEndReservationController::class, 'stepTwo'])->name('reservations.step.two');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
